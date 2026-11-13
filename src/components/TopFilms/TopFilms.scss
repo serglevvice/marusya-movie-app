@@ -1,0 +1,124 @@
+@use "./movie-card";
+
+.top-films {
+  margin-bottom: clamp(64px, 10vw, 160px);
+  font-family: "Play", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+
+  &__title {
+    margin: 0 0 clamp(24px, 4vw, 62px);
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: clamp(24px, 4vw, 64px) clamp(14px, 2.7vw, 40px);
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    min-width: 0;
+  }
+
+  .movie-card__picture {
+    display: block;
+  }
+
+  .movie-card__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+  }
+
+  .movie-card__position {
+    z-index: 1;
+  }
+}
+
+@media (max-width: 1050px) {
+  .top-films {
+    &__list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .top-films {
+    margin-bottom: 0;
+
+    &__title {
+      margin-bottom: 24px;
+      font-size: 24px;
+    }
+
+    &__list {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 40px;
+
+      margin: -60px -20px -56px;
+      padding: 80px 20px;
+
+      overflow-x: auto;
+      overflow-y: hidden;
+
+      scroll-snap-type: x mandatory;
+      scroll-padding-inline-start: 20px;
+      scroll-behavior: smooth;
+
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    &__item {
+      position: relative;
+
+      flex: 0 0 224px;
+      width: 224px;
+      min-width: 224px;
+
+      scroll-snap-align: start;
+    }
+
+    .movie-card {
+      display: block;
+      width: 224px;
+      border-radius: 16px;
+    }
+
+    .movie-card__picture {
+      display: block;
+      width: 224px;
+    }
+
+    .movie-card__image {
+      display: block;
+      width: 224px;
+      height: 336px;
+
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      border-radius: 16px;
+
+      box-shadow: 0 0 80px rgba(255, 255, 255, 0.329);
+    }
+
+    .movie-card__position {
+      top: -8px;
+      left: -6px;
+    }
+  }
+}

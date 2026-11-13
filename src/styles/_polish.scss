@@ -1,0 +1,128 @@
+@keyframes marusya-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+:where(
+  .movie-hero,
+  .movie-about,
+  .hero,
+  .top-films,
+  .genre-page,
+  .genre-movies-page,
+  .favorites-page,
+  .account-page
+) {
+  animation: marusya-enter 0.3s ease-out both;
+}
+
+:where(.top-films, .genre-movies-page, .favorites-page) .movie-card,
+.genre-card {
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    filter 0.22s ease;
+}
+
+:where(.top-films, .genre-movies-page, .favorites-page) .movie-card:hover,
+.genre-card:hover {
+  transform: translateY(-4px);
+  filter: brightness(1.08);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+:where(button, a):focus-visible {
+  outline: 2px solid var(--content-active, #b4a9ff);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 600px) {
+  h1,
+  h2,
+  h3 {
+    overflow-wrap: anywhere;
+  }
+  .page img {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 1299px) {
+  .page .top-films__list,
+  .page .genre-movies-page__list,
+  .page .favorites-page__list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media (max-width: 1049px) {
+  .page .top-films__list,
+  .page .genre-movies-page__list,
+  .page .favorites-page__list,
+  .page .genre-page__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 849px) {
+  .page .top-films__list,
+  .page .genre-movies-page__list,
+  .page .favorites-page__list,
+  .page .genre-page__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 519px) {
+  .page .top-films__list,
+  .page .genre-movies-page__list,
+  .page .favorites-page__list,
+  .page .genre-page__list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  .page .top-films__item,
+  .page .genre-movies-page__item,
+  .page .favorites-page__item,
+  .page .genre-page__item {
+    width: 100%;
+  }
+  .page .top-films__list .movie-card__image,
+  .page .genre-movies-page__list .movie-card__image,
+  .page .favorites-page__list .movie-card__image {
+    width: 100%;
+    aspect-ratio: 2/3;
+    height: auto;
+  }
+}
+
+html,
+body,
+#root {
+  background-color: #101014;
+}
+body,
+#root {
+  width: 100%;
+  min-width: 320px;
+}
+#root {
+  min-height: 100vh;
+}

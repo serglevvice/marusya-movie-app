@@ -1,0 +1,267 @@
+.trailer-modal__backdrop {
+  position: fixed;
+  z-index: 10000;
+  inset: 0;
+
+  display: grid;
+  place-items: center;
+
+  padding: 24px 84px;
+  overflow-y: auto;
+
+  background: rgba(0, 0, 0, 0.82);
+}
+
+.trailer-modal {
+  position: relative;
+
+  box-sizing: border-box;
+  width: min(960px, 100%);
+  aspect-ratio: 16 / 9;
+
+  background: #000;
+  color: #fff;
+
+  font-family: "Play", sans-serif;
+
+  animation: marusya-enter 0.22s ease-out both;
+
+  &__close {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    right: -72px;
+
+    display: grid;
+    place-items: center;
+
+    width: 48px;
+    height: 48px;
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #fff;
+    color: #000;
+
+    cursor: pointer;
+
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+
+    &:hover {
+      background: #b4a9ff;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #b4a9ff;
+      outline-offset: 4px;
+    }
+
+    svg {
+      display: block;
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__player {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+    background: #000;
+
+    iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  }
+
+  &__preview {
+    position: absolute;
+    inset: 0;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+    padding: 0;
+
+    border: 0;
+    background: #151515;
+
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background: linear-gradient(
+        180deg,
+        transparent 55%,
+        rgba(0, 0, 0, 0.25) 100%
+      );
+
+      pointer-events: none;
+    }
+
+    &:focus-visible {
+      outline: 3px solid #b4a9ff;
+      outline-offset: -3px;
+    }
+  }
+
+  &__poster {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
+
+  &__play {
+    position: absolute;
+    z-index: 2;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 80px;
+    height: 80px;
+
+    border-radius: 50%;
+    background: #fff;
+    color: #000;
+
+    transition:
+      background-color 0.3s ease,
+      box-shadow 0.3s ease;
+
+    svg {
+      display: block;
+      width: 26px;
+      height: 31px;
+      margin-left: 5px;
+    }
+  }
+
+  &__preview:hover &__play {
+    background: #b4a9ff;
+    box-shadow: 0 0 24px rgba(180, 169, 255, 0.35);
+  }
+
+  &__title {
+    position: absolute;
+    z-index: 2;
+
+    bottom: 24px;
+    left: 20px;
+    right: 20px;
+
+    margin: 0;
+    padding: 22px 40px;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    color: #fff;
+
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .trailer-modal__backdrop {
+    padding: 24px 72px;
+  }
+
+  .trailer-modal {
+    &__close {
+      right: -56px;
+      width: 40px;
+      height: 40px;
+    }
+
+    &__title {
+      font-size: 20px;
+      line-height: 28px;
+      padding: 16px 24px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .trailer-modal__backdrop {
+    padding: 0;
+  }
+
+  .trailer-modal {
+    width: 100%;
+    max-width: none;
+    aspect-ratio: 16 / 9;
+    border-radius: 0;
+
+    &__close {
+      top: 10px;
+      right: 10px;
+
+      width: 36px;
+      height: 36px;
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    &__play {
+      width: 56px;
+      height: 56px;
+
+      svg {
+        width: 18px;
+        height: 22px;
+        margin-left: 3px;
+      }
+    }
+
+    &__title {
+      bottom: 8px;
+      left: 8px;
+      right: 8px;
+
+      padding: 10px 12px;
+
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trailer-modal,
+  .trailer-modal__close,
+  .trailer-modal__play {
+    animation: none;
+    transition: none;
+  }
+}
