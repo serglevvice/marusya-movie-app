@@ -14,7 +14,7 @@ Explore films, browse genres, watch trailers, and build your personal watchlist.
 
 **Frontend diploma project · Russian-language interface · English documentation**
 
-**Live demo:** Coming after deployment
+**Live demo:** [Open Marusya](https://marusya-movie-app.vercel.app)
 
 </div>
 
